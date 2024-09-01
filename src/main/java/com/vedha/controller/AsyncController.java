@@ -22,6 +22,14 @@ public class AsyncController {
 
     private final AsyncService asyncService;
 
+    @Operation(summary = "Demo Method", description = "Demo Method Call")
+    @ApiResponse(responseCode = "200", description = "HTTP Status 200 OK")
+    @PostMapping(value = "/demo", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, String>> demo(@RequestParam(value = "name", defaultValue = "Vedha") String name) {
+
+        return ResponseEntity.ok(asyncService.demo(name));
+    }
+
     @Operation(summary = "Normal Method", description = "Normal Method Call")
     @ApiResponse(responseCode = "200", description = "HTTP Status 200 OK")
     @PostMapping(value = "/normal", produces = MediaType.APPLICATION_JSON_VALUE)

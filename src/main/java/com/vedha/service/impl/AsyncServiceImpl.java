@@ -21,11 +21,18 @@ public class AsyncServiceImpl implements AsyncService {
     private final ExecutorService executor;
 
     @Override
+    public Map<String, String> demo(String name) {
+
+        log.info("Hello Demo, {}!", name);
+        return Map.of("message", "Hello, " + name + "!");
+    }
+
+    @Override
     public Map<String, String> normal(String name) {
 
         try {
 
-            TimeUnit.SECONDS.sleep(3);
+            TimeUnit.SECONDS.sleep(10);
             log.info("Hello Normal, {}!", name);
         } catch (Exception e) {
 
